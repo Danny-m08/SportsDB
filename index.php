@@ -1,14 +1,15 @@
 <html>
-<head><title>Sample page</title></head>
+<head><title>My Sports DB</title></head>
 <body>
-	<p>
-	Enter your name and login to enter</p>
-<form method 'POST' action = "form.php">
+	<h2>
+	Enter your name and login to enter</h2>
+<form action = "form.php">
 	Username: <input type 'text' name ='Username'/>
-	Password: <input type 'text' name ='Password'
-		<br/>
-		<button type='submit'>Submit</button>
+	<br><br>	Password: <input type 'text' name ='Password'>
+
+	<button type='submit'>Submit</button>
 	</form>
+	<p>This website is going to allow people to access a mySQL database that stores information of Major League Sports.</p>
 	</body>
 	</html>
 		
