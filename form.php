@@ -16,7 +16,7 @@
 	
 	include("connect.php");
 
-	if( !strcmp ($_POST['username'], '') || !strcmp($_POST['password1'],'') || !strcmp($_POST['password2'],'')):
+	if( empty($_POST['username']) || empty($_POST['password1']) || empty($_POST['password2']) ):
 	 		echo 'Please fill out all text fields.'; 
 
 	else:	

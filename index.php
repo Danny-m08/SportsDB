@@ -43,15 +43,22 @@
 	elseif( !strcmp( $row['password'], $_POST['Password']) ): 
 ?>		
 		<html>
-			<h3> Welcome to the Sports Database</h3>
-			<p> click to access our query -></p>
-			<button type = 'button' onclick='location'="query.php"></button>
+			<form action = "query.php">
+				<button type 'Submit'>Go to Query</button>
 		</html>
 
-<?php else: ?>
-		<html>
-			<h2>Unable to verify user</h2>
-			<p>	Please <a href = "index.php">return</a> To the main page.</p>
-		</html>
-<?php endif; ?>	
+<?php 
+	else: 
+		echo "Unable to verify user ... Please try again.";
+	 endif; ?>	
+
+
+
+
+
+
+
+
+
+
 	
