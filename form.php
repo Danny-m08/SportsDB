@@ -20,6 +20,7 @@
 	 		echo 'Please fill out all text fields.'; 
 
 	else:	
+		$res = mysqli_query($connection, "SELECT username FROM users WHERE username = '".$_POST['username']."'");
 
 		if( mysqli_num_rows($res) > 0):
 		echo "Username already exists within the database...\n\nPlease try again."; 

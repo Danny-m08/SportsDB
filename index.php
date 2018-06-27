@@ -1,25 +1,57 @@
 
 <html>
-<head><title>My Sports DB</title></head>
-<body>
-	<h2>Enter your name and login to enter</h2>
+	<head><title>My Sports DB</title></head>
+		<h2>Enter your name and login to enter</h2>
 
-<form method = 'POST' action = "login.php">
+		<form method = 'POST'>
 	
-	Username: <input type 'text' name ='Username'/>
-	<br>
-	Password: <input type 'text' name ='Password'>
-	<button type='submit' = "">Submit</button>
-</form>
-
-<h7> Or </h7>
-<br>
-	<form method = 'POST' action = 'form.php'>
-	<button type 'Submit' value = 'button'>Become a user</button>
-	</form>
-
-</body>
+			Username: <input type 'text' name ='Username'/>
+			<br>
+			Password: <input type 'text' name ='Password'>
+			<button type='submit' = "">Submit</button>
+		</form>
+		<br>
 </html>
 		
+<?php
 
+	include('connect.php');
+	$result = $connection->query("SELECT username, password FROM users WHERE username = '".$_POST['Username']."'"); 
+	$row = $result->fetch_assoc();
+
+
+	if( empty($_POST['Username']) || empty($_POST['Password']) ):
+?>
+	<html>
+	<form method = 'POST' action = "form.php">
+		<button type 'Submit' value = 'button'>Become a user</button>
+	</form>
+	</html>
+
+<?php
+	elseif( mysqli_num_rows($result) == 0) : 
+		echo $_POST['Username']." does not have the proper credentials to use the database\n";?>
+
+		<html>
+		<form method ='POST' action ="form.php" >
+			Would you like to register to use the database? <button type = 'submit'>Yes</button>
+			<button type = 'submit' formaction="index.php">No</button>
+					</form>
+
+		</html>
+<?php
+	elseif( !strcmp( $row['password'], $_POST['Password']) ): 
+?>		
+		<html>
+			<h3> Welcome to the Sports Database</h3>
+			<p> click to access our query -></p>
+			<button type = 'button' onclick='location'="query.php"></button>
+		</html>
+
+<?php else: ?>
+		<html>
+			<h2>Unable to verify user</h2>
+			<p>	Please <a href = "index.php">return</a> To the main page.</p>
+		</html>
+<?php endif; ?>	
 	
